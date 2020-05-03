@@ -3,5 +3,5 @@ venv/*
 __pycache__/*
 build/*
 dist/*
-PyCronExpression_vubon.*
+PyCronExpression.*
 py_cron_expression/__pycache__/*
