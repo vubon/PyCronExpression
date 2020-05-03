@@ -18,4 +18,6 @@ print(res)
 # Then you need to add cancel='second'
 # example
 cron_job.cron_expression(time=timestamp, cancel='second')
+# Output 
+# 55 13 2 5 ? 2020
 ```
