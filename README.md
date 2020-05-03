@@ -3,6 +3,11 @@
 This is a simple library for making cron job expression. 
 User need to pass timestamp or datetime object to create cron job expression. 
 
+## Installation
+```shell script
+pip install PyCronExpression
+```
+
 ## Example 
 ```python
 from datetime import datetime
