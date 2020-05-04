@@ -24,15 +24,17 @@ def date_validation(func):
                 string = datetime.fromtimestamp(time).isoformat()
                 if cancel == 'second':
                     kwargs['cancel'] = True
+                else:
+                    kwargs['cancel'] = False
                 kwargs['time'] = string
-                kwargs['cancel'] = False
                 return func(*args, **kwargs)
             elif isinstance(time, datetime):
                 string = time.isoformat().split(".")[0]
                 if cancel == "second":
                     kwargs['cancel'] = True
+                else:
+                    kwargs['cancel'] = False
                 kwargs['time'] = string
-                kwargs['cancel'] = False
                 return func(*args, **kwargs)
             else:
                 raise ValueError(f"Invalid data type {time}")
