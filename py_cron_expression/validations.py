@@ -3,6 +3,10 @@ A simple data validation
 @Since: 02 May, 2020
 """
 from datetime import datetime
+import pytz
+from tzlocal import get_localzone
+
+GET_TIMEZONE = get_localzone()
 
 
 def date_validation(func):
@@ -19,20 +23,17 @@ def date_validation(func):
         """
         try:
             time = kwargs['time']
+            timezone = kwargs.get('timezone', GET_TIMEZONE.zone)
             cancel = kwargs.get('cancel', None)
             if isinstance(time, int):
-                string = datetime.fromtimestamp(time).isoformat()
-                if cancel == 'second':
-                    kwargs['cancel'] = True
-                else:
+                string = datetime.fromtimestamp(time, tz=pytz.timezone(timezone)).isoformat()
+                if cancel != 'second':
                     kwargs['cancel'] = False
                 kwargs['time'] = string
                 return func(*args, **kwargs)
             elif isinstance(time, datetime):
-                string = time.isoformat().split(".")[0]
-                if cancel == "second":
-                    kwargs['cancel'] = True
-                else:
+                string = (time.astimezone(tz=pytz.timezone(timezone))).strftime('%Y-%m-%dT%H:%M:%S')
+                if cancel != "second":
                     kwargs['cancel'] = False
                 kwargs['time'] = string
                 return func(*args, **kwargs)
