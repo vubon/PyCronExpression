@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="PyCronExpression",
-    version="0.0.3",
+    version="0.0.4",
     author="Vubon Roy",
     author_email="vubon.roy@gmail.com",
     description="A simple Python Cron Expression lib",

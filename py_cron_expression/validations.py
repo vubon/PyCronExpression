@@ -26,7 +26,7 @@ def date_validation(func):
             timezone = kwargs.get('timezone', GET_TIMEZONE.zone)
             cancel = kwargs.get('cancel', None)
             if isinstance(time, int):
-                string = datetime.fromtimestamp(time, tz=pytz.timezone(timezone)).isoformat()
+                string = datetime.fromtimestamp(time, tz=pytz.timezone(timezone)).strftime('%Y-%m-%dT%H:%M:%S')
                 if cancel != 'second':
                     kwargs['cancel'] = False
                 kwargs['time'] = string
