@@ -11,7 +11,7 @@ pip install PyCronExpression
 ## Example 
 ```python
 from datetime import datetime
-from py_cron_expression.py_cron import CronJobExpression
+from py_cron_expression import CronJobExpression
 cron_job = CronJobExpression()
 
 timestamp = int(datetime.now().timestamp())
@@ -31,7 +31,7 @@ If you need to convert the cron job expression to other timezone. Please follow 
 By default your will get the cron job expression as your local timezone. 
 ```python
 from datetime import datetime
-from py_cron_expression.py_cron import CronJobExpression
+from py_cron_expression import CronJobExpression
 cron_job = CronJobExpression()
 
 timestamp = int(datetime.now().timestamp())

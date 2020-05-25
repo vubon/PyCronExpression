@@ -1,6 +1,6 @@
 import unittest
 
-from py_cron_expression.py_cron import CronJobExpression
+from py_cron_expression import CronJobExpression
 
 
 class CronTest(unittest.TestCase):
@@ -16,8 +16,7 @@ class CronTest(unittest.TestCase):
         self.assertEqual(response, "10 55 13 2 5 ? 2020")
 
     def test_invalid_data(self):
-        response = self.cron_job.cron_expression(time=self.invalid_data)
-        self.assertEqual(response, 'Invalid data type This is a invalid data')
+        self.assertRaises(ValueError, lambda: self.cron_job.cron_expression(time=self.invalid_data))
 
 
 if __name__ == "__main__":

@@ -12,9 +12,8 @@ def remove_zero(number: str) -> str:
 class CronJobExpression:
     @staticmethod
     @date_validation
-    def cron_expression(*args, **kwargs) -> str:
+    def cron_expression(**kwargs) -> str:
         """
-        :param args: tuple
         :param kwargs: dict
         :return:
         10 20 12 30 4 ? 2020

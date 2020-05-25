@@ -39,7 +39,7 @@ def date_validation(func):
                 return func(*args, **kwargs)
             else:
                 raise ValueError(f"Invalid data type {time}")
-        except KeyError as err:
-            raise KeyError(f"Key name should {err}")
+        except KeyError as key:
+            raise KeyError(f"Key name should {key}")
 
     return wrapper
