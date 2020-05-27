@@ -38,4 +38,9 @@ def remove_zero(number: str) -> str:
     :param number:
     :return:
     """
-    return number.replace("0", "") if number.startswith("0") else number
+    if number.startswith("0") and number.endswith("0"):
+        return "0"
+    elif number.startswith("0"):
+        return number.replace("0", "")
+    else:
+        return number
