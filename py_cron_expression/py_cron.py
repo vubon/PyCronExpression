@@ -1,4 +1,3 @@
-import datetime
 from py_cron_expression.validations import *
 from py_cron_expression.util import remove_zero, PLATFORMS
 
@@ -105,10 +104,3 @@ class CronJobExpression:
         expression_list[0] = "0"
         expression_list[1] = f"{hours or remove_zero(self._hours)}"
         return " ".join(expression_list)
-
-
-if __name__ == "__main__":
-    cron = CronJobExpression()
-    res = cron.cron_expression(time=datetime.datetime.now(), cancel='second')
-    print(cron.hourly(platform='linux', hours=1))
-    print(cron.daily(platform='linux', hours=1))
