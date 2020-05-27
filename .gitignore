@@ -5,3 +5,15 @@ build/*
 dist/*
 PyCronExpression.*
 py_cron_expression/__pycache__/*
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
