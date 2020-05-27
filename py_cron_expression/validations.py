@@ -8,8 +8,12 @@ from tzlocal import get_localzone
 
 GET_TIMEZONE = get_localzone()
 
+__all__ = [
+    'date_valid', 'hour_valid', 'minute_valid', 'platform_valid'
+]
 
-def date_validation(func):
+
+def date_valid(func):
     """
     :param func:
     :return:
@@ -41,5 +45,39 @@ def date_validation(func):
                 raise ValueError(f"Invalid data type {time}")
         except KeyError as key:
             raise KeyError(f"Key name should {key}")
+
+    return wrapper
+
+
+def hour_valid(func):
+    def wrapper(*args, **kwargs):
+        hours = kwargs.get("hours")
+        if hours:
+            if hours not in (hour for hour in range(1, 24)):
+                raise ValueError("Should give valid hours value")
+        return func(*args, **kwargs)
+
+    return wrapper
+
+
+def minute_valid(func):
+    def wrapper(*args, **kwargs):
+        minutes = kwargs.get("minutes")
+        if minutes:
+            if minutes not in (hour for hour in range(1, 60)):
+                raise ValueError("Should give valid minutes value")
+        return func(*args, **kwargs)
+
+    return wrapper
+
+
+def platform_valid(func):
+    def wrapper(*args, **kwargs):
+        platform = kwargs.get("platform")
+        if not platform:
+            raise KeyError("Should pass platform key")
+        if platform not in ('aws', 'linux'):
+            raise ValueError("Should use valid platform. Valid platforms are aws or linux")
+        return func(*args, **kwargs)
 
     return wrapper
