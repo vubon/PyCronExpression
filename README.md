@@ -95,6 +95,7 @@ print(daily)
 ```
 
 ### Explanation: 
+Linux platform Cron Expressions Definition (crontab)
 ```text
 # To define the time you can provide concrete values for
 # minute (m), hour (h), day of month (dom), month (mon),
@@ -111,7 +112,7 @@ Linux platform cron job definition
 # *  *  *  *  *
 ```
 
-AWS platform cron job definition
+AWS Platform Cron Expressions Definition
 ```text
 # .---------------------- minute (0 - 59)
 # |  .------------------- hour (0 - 23)
