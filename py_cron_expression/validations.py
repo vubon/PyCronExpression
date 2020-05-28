@@ -53,7 +53,7 @@ def hour_valid(func):
     def wrapper(*args, **kwargs):
         hours = kwargs.get("hours")
         if hours:
-            if hours not in (hour for hour in range(1, 24)):
+            if hours not in tuple(hour for hour in range(1, 24)):
                 raise ValueError("Should give valid hours value")
         return func(*args, **kwargs)
 
@@ -64,7 +64,7 @@ def minute_valid(func):
     def wrapper(*args, **kwargs):
         minutes = kwargs.get("minutes")
         if minutes:
-            if minutes not in (hour for hour in range(1, 60)):
+            if minutes not in tuple(hour for hour in range(1, 60)):
                 raise ValueError("Should give valid minutes value")
         return func(*args, **kwargs)
 
