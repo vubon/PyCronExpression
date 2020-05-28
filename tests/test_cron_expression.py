@@ -14,7 +14,7 @@ class CronTest(unittest.TestCase):
 
     def test_valid_timestamp(self):
         response = self.cron.cron_expression(time=self.valid_timestamp)
-        self.assertEqual(response, "10 55 13 2 5 ? 2020")
+        self.assertEqual(response, "10 55 14 2 5 ? 2020")
 
     def test_valid_datetime(self):
         res = self.cron.cron_expression(time=self.valid_datetime)
@@ -22,7 +22,7 @@ class CronTest(unittest.TestCase):
 
     def test_valid_omit_second(self):
         res = self.cron.cron_expression(time=self.valid_timestamp, cancel='second')
-        self.assertEqual(res, "55 13 2 5 ? 2020")
+        self.assertEqual(res, "55 14 2 5 ? 2020")
 
     def test_invalid_data(self):
         self.assertRaises(ValueError, lambda: self.cron.cron_expression(time=self.invalid_data))

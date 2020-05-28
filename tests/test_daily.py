@@ -3,7 +3,7 @@ import unittest
 from py_cron_expression import CronJobExpression
 
 
-class TestMinute(unittest.TestCase):
+class TestDaily(unittest.TestCase):
 
     def setUp(self) -> None:
         self.cron = CronJobExpression()

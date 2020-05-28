@@ -13,7 +13,7 @@ pip install PyCronExpression
 | Minute                               | `done`      
 | Hourly                               | `done`       
 | Daily                                | `Done` 
-| Weekly                               | `Comming`        
+| Weekly                               | `done`        
 
 ## Example 
 
@@ -89,6 +89,15 @@ daily = cron.daily(platform="linux", minutes=1)
 print(daily)
 # 0 1 * * *
 # At 01:00:00am every day
+```
+#### Weekly 
+```Python
+from py_cron_expression import CronJobExpression
+cron = CronJobExpression()
+weekly = cron.weekly(platform="linux", minutes=1, hours=10, weekly="sunday")
+print(weekly)
+# 1 10 * * 0
+# At 10:01:00 AM every Sunday
 ```
 
 ### Explanation: 

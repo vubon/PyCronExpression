@@ -1,5 +1,5 @@
 """
-@since: 26 may, 2020
+@since: 26 May 2020
 
 # To define the time you can provide concrete values for
 # minute (m), hour (h), day of month (dom), month (mon),
@@ -30,6 +30,16 @@ aws docs link: https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/Schedu
 PLATFORMS = {
     "linux": "* * * * *",
     "aws": "* * * * ? *"
+}
+
+WEEKS = {
+    "sunday": "0",
+    "monday": "1",
+    "tuesday": "2",
+    "wednesday": "3",
+    "thursday": "4",
+    "friday": "5",
+    "saturday": "6"
 }
 
 

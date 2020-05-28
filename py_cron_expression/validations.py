@@ -3,17 +3,20 @@ A simple data validation
 @Since: 02 May, 2020
 """
 from datetime import datetime
+from typing import Callable
 import pytz
-from tzlocal import get_localzone
+from tzlocal import get_localzone_name
 
-GET_TIMEZONE = get_localzone()
+from py_cron_expression.util import WEEKS
+
+GET_TIMEZONE = get_localzone_name()
 
 __all__ = [
-    'date_valid', 'hour_valid', 'minute_valid', 'platform_valid'
+    "date_valid", "hour_valid", "minute_valid", "platform_valid", "weekly_valid"
 ]
 
 
-def date_valid(func):
+def date_valid(func: Callable) -> Callable:
     """
     :param func:
     :return:
@@ -27,7 +30,7 @@ def date_valid(func):
         """
         try:
             time = kwargs['time']
-            timezone = kwargs.get('timezone', GET_TIMEZONE.zone)
+            timezone = kwargs.get('timezone', GET_TIMEZONE)
             cancel = kwargs.get('cancel', None)
             if isinstance(time, int):
                 string = datetime.fromtimestamp(time, tz=pytz.timezone(timezone)).strftime('%Y-%m-%dT%H:%M:%S')
@@ -49,7 +52,7 @@ def date_valid(func):
     return wrapper
 
 
-def hour_valid(func):
+def hour_valid(func: Callable) -> Callable:
     def wrapper(*args, **kwargs):
         hours = kwargs.get("hours")
         if hours:
@@ -60,18 +63,29 @@ def hour_valid(func):
     return wrapper
 
 
-def minute_valid(func):
+def minute_valid(func: Callable) -> Callable:
     def wrapper(*args, **kwargs):
         minutes = kwargs.get("minutes")
-        if minutes:
-            if minutes not in tuple(hour for hour in range(1, 60)):
-                raise ValueError("Should give valid minutes value")
+        if minutes and minutes not in tuple(hour for hour in range(1, 60)):
+            raise ValueError("Should give valid minutes value")
         return func(*args, **kwargs)
 
     return wrapper
 
 
-def platform_valid(func):
+def weekly_valid(func: Callable) -> Callable:
+    def wrapper(*args, **kwargs):
+        day = kwargs.get("weekly")
+        value = WEEKS.get(day.lower())
+        if day and value is None:
+            raise ValueError("Should give valid weekly value")
+        kwargs["weekly"] = value
+        return func(*args, **kwargs)
+
+    return wrapper
+
+
+def platform_valid(func: Callable) -> Callable:
     def wrapper(*args, **kwargs):
         platform = kwargs.get("platform")
         if not platform:

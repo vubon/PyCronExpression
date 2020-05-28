@@ -22,7 +22,7 @@ pip install PyCronExpression
 | Minute                               | `done`      
 | Hourly                               | `done`       
 | Daily                                | `Done` 
-| Weekly                               | `Comming`        
+| Weekly                               | `done`        
 
 ## Example 
 

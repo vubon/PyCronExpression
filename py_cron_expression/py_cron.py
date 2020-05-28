@@ -20,6 +20,7 @@ class CronJobExpression:
         self._minutes = None
         self._hours = None
         self._day = None
+        self._weekly = None
         self._month = None
         self._year = None
 
@@ -29,7 +30,7 @@ class CronJobExpression:
         :param kwargs: dict
         :return:
         10 20 12 30 4 ? 2020
-        S  M  H  D  M W  Y
+        S  M  H  D  M W Y
         """
         time = kwargs['time']
         cancel = kwargs['cancel']
@@ -104,3 +105,33 @@ class CronJobExpression:
         expression_list[0] = "0"
         expression_list[1] = f"{hours or remove_zero(self._hours)}"
         return " ".join(expression_list)
+
+    @platform_valid
+    @hour_valid
+    @minute_valid
+    @weekly_valid
+    def weekly(self, platform: str, hours: int, minutes: int, weekly: str = None) -> str:
+        """
+        :param platform: aws or linux
+        :param hours: [1...23]
+        :param minutes: [1...59]
+        :param weekly: Sunday to Saturday
+        """
+        if not self._weekly and not weekly:
+            raise ValueError("Should pass datetime object or weekly value")
+
+        expression_list = PLATFORMS.get(platform).split(" ")
+        expression_list[0] = f"{minutes}"
+        expression_list[1] = f"{hours}"
+        if platform.lower() == "aws":
+            expression_list[-2] = weekly
+        else:
+            expression_list[-1] = weekly
+
+        return " ".join(expression_list)
+
+
+if __name__ == '__main__':
+    cron = CronJobExpression()
+    h = cron.weekly(**{"platform": "linux", "hours": 10, "minutes": 1, "weekly": "sunday"})
+    print(h)
