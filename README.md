@@ -1,6 +1,6 @@
 # Python Cron Expression
 [![PyPI version](https://badge.fury.io/py/PyCronExpression.svg)](https://badge.fury.io/py/PyCronExpression)
-![Coverage](docs/coverage.svg)
+![Coverage](https://raw.githubusercontent.com/vubon/PyCronExpression/master/docs/coverage.svg)
 [![GitHub version](https://badge.fury.io/gh/vubon%2FPyCronExpression.svg)](https://badge.fury.io/gh/vubon%2FPyCronExpression)
 
 ## Introduction
