@@ -9,7 +9,7 @@ def get_long_description():
 
 setuptools.setup(
     name="PyCronExpression",
-    version="1.0.0",
+    version="1.0.1",
     author="Vubon Roy",
     author_email="vubon.roy@gmail.com",
     description="A simple Python Cron Expression lib",
