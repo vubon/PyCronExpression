@@ -4,8 +4,10 @@
 [![GitHub version](https://badge.fury.io/gh/vubon%2FPyCronExpression.svg)](https://badge.fury.io/gh/vubon%2FPyCronExpression)
 
 ## Introduction
-This is a simple library for making cron job expression. 
-User need to pass timestamp or datetime object to create cron job expression. 
+Introducing `PyCronExpression` – a user-friendly Python library for crafting Cron job expressions effortlessly.
+With this tool, users can create Cron job expressions by simply passing a timestamp or datetime object.
+Say goodbye to the complexities of writing Cron expressions
+and embrace a more convenient way to manage scheduled tasks on Linux or AWS platforms.
 
 ## Quickstart
 ### Installation
@@ -16,13 +18,13 @@ pip install PyCronExpression
 
 ##### Feature List
 
-| Name                                 | status     
-| ---                                  | ---        
-| Timestamp or datetime object         | `done`       
-| Minute                               | `done`      
-| Hourly                               | `done`       
-| Daily                                | `Done` 
-| Weekly                               | `done`        
+| Name                         | status |
+|------------------------------|--------|
+| Timestamp or datetime object | `done` |
+| Minute                       | `done` |
+| Hourly                       | `done` |
+| Daily                        | `Done` |
+| Weekly                       | `done` |
 
 ## Example 
 

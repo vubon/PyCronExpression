@@ -7,13 +7,13 @@ pip install PyCronExpression
 ```
 ##### Feature List
 
-| Name                                 | status     
-| ---                                  | ---        
-| Timestamp or datetime object         | `done`       
-| Minute                               | `done`      
-| Hourly                               | `done`       
-| Daily                                | `Done` 
-| Weekly                               | `done`        
+| Name                         | status |
+|------------------------------|--------|
+| Timestamp or datetime object | `done` |
+| Minute                       | `done` |
+| Hourly                       | `done` |
+| Daily                        | `Done` |
+| Weekly                       | `done` |
 
 ## Example 
 
